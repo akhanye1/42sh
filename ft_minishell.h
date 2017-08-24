@@ -6,7 +6,7 @@
 /*   By: akhanye <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 23:40:00 by akhanye           #+#    #+#             */
-/*   Updated: 2017/07/30 17:58:02 by akhanye          ###   ########.fr       */
+/*   Updated: 2017/08/24 14:08:16 by akhanye          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct		s_env
 	struct termios	*term;
 }					t_env;
 
+struct termios		saved;
+
 
 enum				{FALSE, TRUE};
 int					ft_echo(char **cmd, t_env *env);
@@ -73,10 +75,10 @@ void				freeallmem(t_mem **mem);
 int					free_return(int num, char **line);
 void				duplicate_environ(t_env *env);
 char				*get_envvalue(char *var, t_env *envv);
-int				updateenv(char *cmp, char *newvar, t_env *env);
+int					updateenv(char *cmp, char *newvar, t_env *env);
 void				duplicate_new(t_env *env, char *val);
-int				setnewenv(char *var, char *newvar, t_env *env);
-void			fix_args(char *str);
+int					setnewenv(char *var, char *newvar, t_env *env);
+void				fix_args(char *str);
 int					shellon(t_env *env);
 int					shelloff(struct termios *ptr);
 void				myhandle(int mysignal);

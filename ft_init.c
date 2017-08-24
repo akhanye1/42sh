@@ -10,7 +10,7 @@ int		init_ent(t_env *env, char **arr)
 {
 	char	buff[5];
 
-	if (tgetent(buff, get_envvalue("TERM", &env)) <= 0)
+	if (tgetent(buff, get_envvalue("TERM", env)) <= 0)
 	{
 		ft_freestrsplit(env->env);
 		ft_freestrsplit(arr);
@@ -18,7 +18,8 @@ int		init_ent(t_env *env, char **arr)
 	}
 	// TODO initialize signals here
 	
-	initialise_screen(&env);	
-	initialize_shell(&env);
+	tcgetattr(STDIN_FILENO, &saved);
+	initialise_screen(env);	
+	initialize_shell(env);
 	return (1);
 }

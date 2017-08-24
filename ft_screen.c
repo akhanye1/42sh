@@ -16,7 +16,7 @@ static void	get_pos(t_env *env)
 	{
 		if (buff[i] >= 48 && buff[i] <= 57)
 		{
-			env->screen.min_y = ft_atoi(&buf[i]);
+			env->screen.min_y = ft_atoi(&buff[i]);
 			return ;
 		}
 	}
@@ -28,5 +28,5 @@ void		initialise_screen(t_env *env)
 	env->screen.height = tgetnum("li");
 	env->screen.mw_width = 0;
 	env->screen.padding = 0;
-	get_pos(t_env);
+	get_pos(env);
 }
