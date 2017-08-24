@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	minishell
+NAME		=	21sh
 
 SRC			=	main.c				\
 				ft_echo.c			\
@@ -23,7 +23,12 @@ SRC			=	main.c				\
 				ft_smartfree.c			\
 				ft_duplicate.c			\
 				ft_getval.c				\
-				ft_arguments.c	
+				ft_arguments.c			\
+				ft_keytrigger.c			\
+				ft_shell.c				\
+				ft_signals.c			\
+				ft_screen.c				\
+				ft_init.c
 
 FLAGS		=  -Wall -Wextra -Werror
 

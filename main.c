@@ -117,16 +117,19 @@ int				main(void)
 	t_env		envv;
 
 	envv.mem = NULL;
-	arr = ft_strsplit(CMDS, '.');
-	if (!arr)
+	if (!(arr = ft_strsplit(CMDS, '.')))
 		return (1);
 	getcwd(wdir, MAXWDIR);
 	duplicate_environ(&envv);
 	envv.wd = wdir;
+	if (!init_ent(&envv, arr))
+		return (0);
+	line = NULL;
 	while (TRUE)
 	{
 		ft_putstr("$> ");
-		get_next_line(0, &line);
+		//get_next_line(0, &line);
+		get_key_line(&line, &envv);
 		if (process_cmd(line, arr, &envv) == -1)
 		{
 			ft_freestrsplit(arr);
@@ -135,6 +138,7 @@ int				main(void)
 			ft_freestrsplit(envv.env);
 			exit(0);
 		}
+		free(line);
 	}
 	return (0);
 }
