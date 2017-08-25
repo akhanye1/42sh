@@ -128,10 +128,10 @@ int				main(void)
 	while (TRUE)
 	{
 		ft_putstr("$> ");
-		//get_next_line(0, &line);
 		get_key_line(&line, &envv);
 		if (process_cmd(line, arr, &envv) == -1)
 		{
+			shelloff(&saved);
 			ft_freestrsplit(arr);
 			free(line);
 			freeallmem(&envv.mem);
@@ -140,5 +140,6 @@ int				main(void)
 		}
 		free(line);
 	}
+	shelloff(&saved);
 	return (0);
 }

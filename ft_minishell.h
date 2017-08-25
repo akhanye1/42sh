@@ -17,13 +17,17 @@
 # include <signal.h>
 # include <termcap.h>
 # define CMDS "echo.cd.setenv.unsetenv.env"
-# define MAXWDIR 1000
+# define MAXWDIR 10000
 # define TERM_BUFFER 2048
 # define KEY_UP 279165
 # define KEY_DOWN 279166
 # define KEY_LEFT 279168
 # define KEY_RIGHT 279167
 # define KEY_SPACE 32
+# define KEY_BACKSPACE 127
+# define KEY_DEL 279151126
+# define KEY_HOME 279172
+# define KEY_END 279170
 
 typedef struct		s_mem
 {
@@ -56,7 +60,7 @@ typedef struct		s_env
 	struct s_mem	*mem;
 	struct s_screen	screen;
 	struct s_hist	*history;
-	struct termios	*term;
+	struct termios	term;
 }					t_env;
 
 struct termios		saved;
@@ -85,5 +89,9 @@ void				myhandle(int mysignal);
 void				initialise_screen(t_env *env);
 int					get_key_line(char **line, t_env *env);
 int					init_ent(t_env *env, char **arr);
+void				k_action(int key, int *i, char *temp);
+void				clear_line(void);
+void				move_cursor(char dir);
+int					ft_puts(int c);
 
 #endif

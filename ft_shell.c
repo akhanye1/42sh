@@ -21,13 +21,14 @@ int		shellon(t_env *env)
 {
 	char	buff[TERM_BUFFER];
 
+	tcgetattr(STDIN_FILENO, &saved);
 	if (!isatty(STDIN_FILENO) || tgetent(buff, get_envvalue("TERM", env)) <= 0 ||
-			tcgetattr(0, env->term) == -1)
+			tcgetattr(0, &env->term) == -1)
 		return (0);
-	env->term->c_lflag &= ~(ICANON | ECHO);
-	env->term->c_cc[VMIN] = 1;
-	env->term->c_cc[VTIME] = 0;
-	if (tcsetattr(STDIN_FILENO, TCSAFLUSH, env->term) == -1)
+	env->term.c_lflag &= ~(ICANON | ECHO);
+	env->term.c_cc[VMIN] = 1;
+	env->term.c_cc[VTIME] = 0;
+	if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &env->term) == -1)
 		return (0);
 	return (1);
 }

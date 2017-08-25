@@ -19,6 +19,7 @@ int		init_ent(t_env *env, char **arr)
 	// TODO initialize signals here
 	
 	tcgetattr(STDIN_FILENO, &saved);
+	tcgetattr(STDIN_FILENO, &env->term);
 	initialise_screen(env);	
 	initialize_shell(env);
 	return (1);

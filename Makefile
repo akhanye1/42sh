@@ -28,7 +28,9 @@ SRC			=	main.c				\
 				ft_shell.c				\
 				ft_signals.c			\
 				ft_screen.c				\
-				ft_init.c				
+				ft_init.c				\
+				ft_keyaction.c			\
+				ft_cursor.c
 
 FLAGS		=  -Wall -Wextra -Werror
 
