@@ -1,0 +1,11 @@
+*.out
+*.exe
+*.o
+*.a
+*.swp
+!spec/*.exe
+!spec/*.out
+!spec/*.o
+!spec/*.a
+!spec/*.swp
+
